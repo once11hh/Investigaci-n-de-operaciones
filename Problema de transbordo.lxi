@@ -1,0 +1,19 @@
+B 3 C o m p i l a t i o n
+B 74 Equation Listing    SOLVE TRANBOR1 Using LP From line 62
+D 77 COSTE
+D 82 OFERTA
+D 93 DEMANDA
+B 109 Column Listing      SOLVE TRANBOR1 Using LP From line 62
+E 112 X
+E 134 Z
+B 142 Model Statistics    SOLVE TRANBOR1 Using LP From line 62
+B 155 Solution Report     SOLVE TRANBOR1 Using LP From line 62
+F 187 COSTE
+F 189 OFERTA
+F 198 DEMANDA
+G 209 X
+G 240 Z
+B 248 E x e c u t i o n
+I 248 X
+I 259 X
+I 270 Z

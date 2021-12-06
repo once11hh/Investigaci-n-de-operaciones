@@ -1,0 +1,284 @@
+GAMS 33.2.0  r4f23b21 Released Dec  1, 2020 WEX-WEI x86 64bit/MS Windows - 11/30/21 13:20:38 Page 1
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+C o m p i l a t i o n
+
+
+   1   
+   2  OPTION LIMROW =100;
+   3  SETS
+   4  I ORIGENES
+   5  /
+   6  IBAGUE
+   7  SANTAM
+   8  CARTAGENA
+   9  BAQLLA
+  10  /
+  11   
+  12  J DESTINOS
+  13  /
+  14  SANTAM
+  15  CARTAGENA
+  16  BAQLLA
+  17  PANAMA
+  18  HONDURAS
+  19  VENEZUELA
+  20  /;
+  21   
+  22   
+  23  PARAMETERS
+  24  A(I) CAPACIDAD DE FABRICACION
+  25  /
+  26  IBAGUE      750
+  27  SANTAM      1150
+  28  CARTAGENA   950
+  29  BAQLLA      900
+  30  /
+  31   
+  32  B(J) DEMANDA
+  33  /
+  34  SANTAM      1150
+  35  CARTAGENA   950
+  36  BAQLLA      900
+  37  PANAMA      200
+  38  HONDURAS    300
+  39  VENEZUELA   250
+  40  /;
+  41   
+  42   
+  43  TABLE D(I,J) COSTE DE TRANSPORTE
+  44   
+  45              SANTAM      CARTAGENA   BAQLLA      PANAMA      HONDURAS    VENEZUELA
+  46  IBAGUE      50000        40000      30000       100000      100000      100000
+  47  SANTAM      0            100000     100000      25000       25000       20000
+  48  CARTAGENA       100000       0           100000      25000       20000       20000
+  49  BAQLLA      100000       100000     0           20000       15000       15000
+  50   
+  51  ;
+  52   
+  53  VARIABLES X(I,J), Z;
+  54  POSITIVE VARIABLE X ;
+  55   
+  56  EQUATIONS COSTE, OFERTA(I),DEMANDA(J);
+  57  COSTE.. Z =E= SUM((I,J), D(I,J)*X(I,J)) ;
+  58  OFERTA(I).. SUM(J, X(I,J)) =e= A(I) ;
+  59  DEMANDA(J).. SUM(I, X(I,J)) =E= B(J) ;
+  60   
+  61  MODEL TRANBOR1 /ALL/ ;
+  62  SOLVE TRANBOR1 USING LP MINIMIZING Z ;
+  63  DISPLAY X.L, X.M, Z.L ;
+
+
+COMPILATION TIME     =        0.000 SECONDS      3 MB  33.2.0 r4f23b21 WEX-WEI
+GAMS 33.2.0  r4f23b21 Released Dec  1, 2020 WEX-WEI x86 64bit/MS Windows - 11/30/21 13:20:38 Page 2
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Equation Listing    SOLVE TRANBOR1 Using LP From line 62
+
+
+---- COSTE  =E=  
+
+COSTE..  - 50000*X(IBAGUE,SANTAM) - 40000*X(IBAGUE,CARTAGENA) - 30000*X(IBAGUE,BAQLLA) - 100000*X(IBAGUE,PANAMA) - 100000*X(IBAGUE,HONDURAS) - 100000*X(IBAGUE,VENEZUELA) - 100000*X(SANTAM,CARTAGENA) - 100000*X(SANTAM,BAQLLA) - 25000*X(SANTAM,PANAMA) - 25000*X(SANTAM,HONDURAS) - 20000*X(SANTAM,VENEZUELA) - 100000*X(CARTAGENA,SANTAM) - 100000*X(CARTAGENA,BAQLLA) - 25000*X(CARTAGENA,PANAMA) - 20000*X(CARTAGENA,HONDURAS) - 20000*X(CARTAGENA,VENEZUELA) - 100000*X(BAQLLA,SANTAM) - 100000*X(BAQLLA,CARTAGENA) - 20000*X(BAQLLA,PANAMA) - 15000*X(BAQLLA,HONDURAS) - 15000*X(BAQLLA,VENEZUELA) + Z =E= 0 ; (LHS = 0)
+     
+
+---- OFERTA  =E=  
+
+OFERTA(IBAGUE)..  X(IBAGUE,SANTAM) + X(IBAGUE,CARTAGENA) + X(IBAGUE,BAQLLA) + X(IBAGUE,PANAMA) + X(IBAGUE,HONDURAS) + X(IBAGUE,VENEZUELA) =E= 750 ; (LHS = 0, INFES = 750 ****)
+     
+OFERTA(SANTAM)..  X(SANTAM,SANTAM) + X(SANTAM,CARTAGENA) + X(SANTAM,BAQLLA) + X(SANTAM,PANAMA) + X(SANTAM,HONDURAS) + X(SANTAM,VENEZUELA) =E= 1150 ; (LHS = 0, INFES = 1150 ****)
+     
+OFERTA(CARTAGENA)..  X(CARTAGENA,SANTAM) + X(CARTAGENA,CARTAGENA) + X(CARTAGENA,BAQLLA) + X(CARTAGENA,PANAMA) + X(CARTAGENA,HONDURAS) + X(CARTAGENA,VENEZUELA) =E= 950 ; (LHS = 0, INFES = 950 ****)
+     
+OFERTA(BAQLLA)..  X(BAQLLA,SANTAM) + X(BAQLLA,CARTAGENA) + X(BAQLLA,BAQLLA) + X(BAQLLA,PANAMA) + X(BAQLLA,HONDURAS) + X(BAQLLA,VENEZUELA) =E= 900 ; (LHS = 0, INFES = 900 ****)
+     
+
+---- DEMANDA  =E=  
+
+DEMANDA(SANTAM)..  X(IBAGUE,SANTAM) + X(SANTAM,SANTAM) + X(CARTAGENA,SANTAM) + X(BAQLLA,SANTAM) =E= 1150 ; (LHS = 0, INFES = 1150 ****)
+     
+DEMANDA(CARTAGENA)..  X(IBAGUE,CARTAGENA) + X(SANTAM,CARTAGENA) + X(CARTAGENA,CARTAGENA) + X(BAQLLA,CARTAGENA) =E= 950 ; (LHS = 0, INFES = 950 ****)
+     
+DEMANDA(BAQLLA)..  X(IBAGUE,BAQLLA) + X(SANTAM,BAQLLA) + X(CARTAGENA,BAQLLA) + X(BAQLLA,BAQLLA) =E= 900 ; (LHS = 0, INFES = 900 ****)
+     
+DEMANDA(PANAMA)..  X(IBAGUE,PANAMA) + X(SANTAM,PANAMA) + X(CARTAGENA,PANAMA) + X(BAQLLA,PANAMA) =E= 200 ; (LHS = 0, INFES = 200 ****)
+     
+DEMANDA(HONDURAS)..  X(IBAGUE,HONDURAS) + X(SANTAM,HONDURAS) + X(CARTAGENA,HONDURAS) + X(BAQLLA,HONDURAS) =E= 300 ; (LHS = 0, INFES = 300 ****)
+     
+DEMANDA(VENEZUELA)..  X(IBAGUE,VENEZUELA) + X(SANTAM,VENEZUELA) + X(CARTAGENA,VENEZUELA) + X(BAQLLA,VENEZUELA) =E= 250 ; (LHS = 0, INFES = 250 ****)
+     
+GAMS 33.2.0  r4f23b21 Released Dec  1, 2020 WEX-WEI x86 64bit/MS Windows - 11/30/21 13:20:38 Page 3
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Column Listing      SOLVE TRANBOR1 Using LP From line 62
+
+
+---- X  
+
+X(IBAGUE,SANTAM)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+   -50000       COSTE
+        1       OFERTA(IBAGUE)
+        1       DEMANDA(SANTAM)
+
+X(IBAGUE,CARTAGENA)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+   -40000       COSTE
+        1       OFERTA(IBAGUE)
+        1       DEMANDA(CARTAGENA)
+
+X(IBAGUE,BAQLLA)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+   -30000       COSTE
+        1       OFERTA(IBAGUE)
+        1       DEMANDA(BAQLLA)
+
+REMAINING 21 ENTRIES SKIPPED
+
+---- Z  
+
+Z
+                (.LO, .L, .UP, .M = -INF, 0, +INF, 0)
+        1       COSTE
+
+GAMS 33.2.0  r4f23b21 Released Dec  1, 2020 WEX-WEI x86 64bit/MS Windows - 11/30/21 13:20:38 Page 4
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Model Statistics    SOLVE TRANBOR1 Using LP From line 62
+
+
+MODEL STATISTICS
+
+BLOCKS OF EQUATIONS           3     SINGLE EQUATIONS           11
+BLOCKS OF VARIABLES           2     SINGLE VARIABLES           25
+NON ZERO ELEMENTS            70
+
+
+GENERATION TIME      =        0.110 SECONDS      4 MB  33.2.0 r4f23b21 WEX-WEI
+GAMS 33.2.0  r4f23b21 Released Dec  1, 2020 WEX-WEI x86 64bit/MS Windows - 11/30/21 13:20:38 Page 5
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Solution Report     SOLVE TRANBOR1 Using LP From line 62
+
+
+               S O L V E      S U M M A R Y
+
+     MODEL   TRANBOR1            OBJECTIVE  Z
+     TYPE    LP                  DIRECTION  MINIMIZE
+     SOLVER  CPLEX               FROM LINE  62
+
+**** SOLVER STATUS     1 Normal Completion         
+**** MODEL STATUS      1 Optimal                   
+**** OBJECTIVE VALUE         34750000.0000
+
+ RESOURCE USAGE, LIMIT          0.203 10000000000.000
+ ITERATION COUNT, LIMIT         1    2147483647
+--- *** This solver runs with a demo license. No commercial use.
+--- GMO memory 0.50 Mb (peak 0.50 Mb)
+--- Dictionary memory 0.00 Mb
+--- Cplex 12.10.0.0 link memory 0.00 Mb (peak 0.00 Mb)
+--- Starting Cplex
+
+
+--- LP status (1): optimal.
+--- Cplex Time: 0.01sec (det. 0.03 ticks)
+
+
+Optimal solution found
+Objective:     34750000.000000
+
+
+                           LOWER          LEVEL          UPPER         MARGINAL
+
+---- EQU COSTE               .              .              .             1.0000      
+
+---- EQU OFERTA  
+
+                 LOWER          LEVEL          UPPER         MARGINAL
+
+IBAGUE          750.0000       750.0000       750.0000     30000.0000      
+SANTAM         1150.0000      1150.0000      1150.0000          .          
+CARTAGENA       950.0000       950.0000       950.0000          .          
+BAQLLA          900.0000       900.0000       900.0000          .          
+
+---- EQU DEMANDA  
+
+                 LOWER          LEVEL          UPPER         MARGINAL
+
+SANTAM         1150.0000      1150.0000      1150.0000         EPS         
+CARTAGENA       950.0000       950.0000       950.0000         EPS         
+BAQLLA          900.0000       900.0000       900.0000         EPS         
+PANAMA          200.0000       200.0000       200.0000     20000.0000      
+HONDURAS        300.0000       300.0000       300.0000     15000.0000      
+VENEZUELA       250.0000       250.0000       250.0000     15000.0000      
+
+---- VAR X  
+
+                           LOWER          LEVEL          UPPER         MARGINAL
+
+IBAGUE   .SANTAM             .              .            +INF        20000.0000      
+IBAGUE   .CARTAGENA          .              .            +INF        10000.0000      
+IBAGUE   .BAQLLA             .           750.0000        +INF             .          
+IBAGUE   .PANAMA             .              .            +INF        50000.0000      
+IBAGUE   .HONDURAS           .              .            +INF        55000.0000      
+IBAGUE   .VENEZUELA          .              .            +INF        55000.0000      
+SANTAM   .SANTAM             .          1150.0000        +INF             .          
+SANTAM   .CARTAGENA          .              .            +INF       100000.0000      
+SANTAM   .BAQLLA             .              .            +INF       100000.0000      
+SANTAM   .PANAMA             .              .            +INF         5000.0000      
+SANTAM   .HONDURAS           .              .            +INF        10000.0000      
+SANTAM   .VENEZUELA          .              .            +INF         5000.0000      
+CARTAGENA.SANTAM             .              .            +INF       100000.0000      
+CARTAGENA.CARTAGENA          .           950.0000        +INF             .          
+CARTAGENA.BAQLLA             .              .            +INF       100000.0000      
+CARTAGENA.PANAMA             .              .            +INF         5000.0000      
+CARTAGENA.HONDURAS           .              .            +INF         5000.0000      
+CARTAGENA.VENEZUELA          .              .            +INF         5000.0000      
+BAQLLA   .SANTAM             .              .            +INF       100000.0000      
+BAQLLA   .CARTAGENA          .              .            +INF       100000.0000      
+BAQLLA   .BAQLLA             .           150.0000        +INF             .          
+BAQLLA   .PANAMA             .           200.0000        +INF             .          
+BAQLLA   .HONDURAS           .           300.0000        +INF             .          
+BAQLLA   .VENEZUELA          .           250.0000        +INF             .          
+
+                           LOWER          LEVEL          UPPER         MARGINAL
+
+---- VAR Z                 -INF      3.4750000E+7        +INF             .          
+
+
+**** REPORT SUMMARY :        0     NONOPT
+                             0 INFEASIBLE
+                             0  UNBOUNDED
+GAMS 33.2.0  r4f23b21 Released Dec  1, 2020 WEX-WEI x86 64bit/MS Windows - 11/30/21 13:20:38 Page 6
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+E x e c u t i o n
+
+
+----     63 VARIABLE X.L  
+
+               SANTAM   CARTAGENA      BAQLLA      PANAMA    HONDURAS   VENEZUELA
+
+IBAGUE                                750.000
+SANTAM       1150.000
+CARTAGENA                 950.000
+BAQLLA                                150.000     200.000     300.000     250.000
+
+
+----     63 VARIABLE X.M  
+
+               SANTAM   CARTAGENA      BAQLLA      PANAMA    HONDURAS   VENEZUELA
+
+IBAGUE      20000.000   10000.000               50000.000   55000.000   55000.000
+SANTAM                 100000.000  100000.000    5000.000   10000.000    5000.000
+CARTAGENA  100000.000              100000.000    5000.000    5000.000    5000.000
+BAQLLA     100000.000  100000.000
+
+
+----     63 VARIABLE Z.L                   =  3.475000E+7  
+
+
+EXECUTION TIME       =        0.500 SECONDS      4 MB  33.2.0 r4f23b21 WEX-WEI
+
+
+USER: GAMS Demo license for Juan Velasquez           G210915|0002CO-GEN
+      Universidad de Caldas, Colombia                          DL048337
+
+
+**** FILE SUMMARY
+
+Input      C:\Users\USUARIO\Downloads\Problema de transbordo.gms
+Output     C:\Users\USUARIO\Downloads\Problema de transbordo.lst
