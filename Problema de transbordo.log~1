@@ -1,4 +1,4 @@
---- Job Problema de transbordo.gms Start 12/07/21 04:13:28 33.2.0 r4f23b21 WEX-WEI x86 64bit/MS Windows
+--- Job Problema de transbordo.gms Start 12/06/21 11:24:30 33.2.0 r4f23b21 WEX-WEI x86 64bit/MS Windows
 --- Applying:
     C:\GAMS\33\gmsprmNT.txt
 --- GAMS Parameters defined
@@ -19,12 +19,12 @@ Licensee: GAMS Demo license for Juan Velasquez           G210915|0002CO-GEN
 GAMS 33.2.0   Copyright (C) 1987-2020 GAMS Development. All rights reserved
 --- Starting compilation
 --- Problema de transbordo.gms(63) 3 Mb
---- Starting execution: elapsed 0:00:00.010
+--- Starting execution: elapsed 0:00:00.028
 --- Problema de transbordo.gms(2) 4 Mb
 --- Generating LP model TRANBOR1
 --- Problema de transbordo.gms(62) 4 Mb
 ---   11 rows  25 columns  70 non-zeroes
---- Executing CPLEX (Solvelink=2): elapsed 0:00:00.060
+--- Executing CPLEX (Solvelink=2): elapsed 0:00:00.129
 
 IBM ILOG CPLEX   33.2.0 r4f23b21 Released Dec 01, 2020 WEI x86 64bit/MS Window
 
@@ -43,21 +43,21 @@ CPXPARAM_MIP_Tolerances_AbsMIPGap                0
 Tried aggregator 1 time.
 LP Presolve eliminated 0 rows and 1 columns.
 Reduced LP has 10 rows, 24 columns, and 48 nonzeros.
-Presolve time = 0.02 sec. (0.02 ticks)
+Presolve time = 0.01 sec. (0.02 ticks)
 Initializing dual steep norms . . .
 
 Iteration      Dual Objective            In Variable           Out Variable
      1        34750000.000000       X(IBAGUE,BAQLLA)   OFERTA(IBAGUE) artif
 
 --- LP status (1): optimal.
---- Cplex Time: 0.03sec (det. 0.03 ticks)
+--- Cplex Time: 0.05sec (det. 0.03 ticks)
 
 
 Optimal solution found
 Objective:     34750000.000000
 
 --- Reading solution for model TRANBOR1
---- Executing after solve: elapsed 0:00:00.401
+--- Executing after solve: elapsed 0:00:00.479
 --- Problema de transbordo.gms(63) 4 Mb
 *** Status: Normal completion
---- Job Problema de transbordo.gms Stop 12/07/21 04:13:28 elapsed 0:00:00.401
+--- Job Problema de transbordo.gms Stop 12/06/21 11:24:31 elapsed 0:00:00.496

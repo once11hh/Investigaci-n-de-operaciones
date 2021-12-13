@@ -1,0 +1,23 @@
+--- Job Problema de transbordo.gms Start 12/06/21 11:23:49 33.2.0 r4f23b21 WEX-WEI x86 64bit/MS Windows
+--- Applying:
+    C:\GAMS\33\gmsprmNT.txt
+--- GAMS Parameters defined
+    Input "C:\Users\once1\Documents\Investigaci-n-de-operaciones\Problema de transbordo.gms"
+    PageSize 0
+    ScrDir C:\Users\once1\Documents\Investigaci-n-de-operaciones\225a\
+    SysDir C:\GAMS\33\
+    LogOption 3
+    ErrMsg 1
+    ErrorLog 99
+    IDE 1
+    LstTitleLeftAligned 1
+****
+**** No license specified and no gamslice.txt found in standard locations.
+****
+*** Status: Terminated due to a licensing error
+***         Request a demo license at www.gams.com/download.
+***         If you have a GAMS license already, you can install it via
+***         the GAMS Studio dialog under "Help | GAMS Licensing" or by
+***         manually saving it as gamslice.txt in a standard location.
+***         Inspect listing file for more information.
+--- Job Problema de transbordo.gms Stop 12/06/21 11:23:49 elapsed 0:00:00.050

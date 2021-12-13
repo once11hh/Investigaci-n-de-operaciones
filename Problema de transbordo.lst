@@ -1,4 +1,4 @@
-GAMS 33.2.0  r4f23b21 Released Dec  1, 2020 WEX-WEI x86 64bit/MS Windows - 11/30/21 13:20:38 Page 1
+GAMS 33.2.0  r4f23b21 Released Dec  1, 2020 WEX-WEI x86 64bit/MS Windows - 12/07/21 04:13:28 Page 1
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
@@ -69,7 +69,7 @@ C o m p i l a t i o n
 
 
 COMPILATION TIME     =        0.000 SECONDS      3 MB  33.2.0 r4f23b21 WEX-WEI
-GAMS 33.2.0  r4f23b21 Released Dec  1, 2020 WEX-WEI x86 64bit/MS Windows - 11/30/21 13:20:38 Page 2
+GAMS 33.2.0  r4f23b21 Released Dec  1, 2020 WEX-WEI x86 64bit/MS Windows - 12/07/21 04:13:28 Page 2
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Equation Listing    SOLVE TRANBOR1 Using LP From line 62
 
@@ -104,7 +104,7 @@ DEMANDA(HONDURAS)..  X(IBAGUE,HONDURAS) + X(SANTAM,HONDURAS) + X(CARTAGENA,HONDU
      
 DEMANDA(VENEZUELA)..  X(IBAGUE,VENEZUELA) + X(SANTAM,VENEZUELA) + X(CARTAGENA,VENEZUELA) + X(BAQLLA,VENEZUELA) =E= 250 ; (LHS = 0, INFES = 250 ****)
      
-GAMS 33.2.0  r4f23b21 Released Dec  1, 2020 WEX-WEI x86 64bit/MS Windows - 11/30/21 13:20:38 Page 3
+GAMS 33.2.0  r4f23b21 Released Dec  1, 2020 WEX-WEI x86 64bit/MS Windows - 12/07/21 04:13:28 Page 3
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Column Listing      SOLVE TRANBOR1 Using LP From line 62
 
@@ -137,7 +137,7 @@ Z
                 (.LO, .L, .UP, .M = -INF, 0, +INF, 0)
         1       COSTE
 
-GAMS 33.2.0  r4f23b21 Released Dec  1, 2020 WEX-WEI x86 64bit/MS Windows - 11/30/21 13:20:38 Page 4
+GAMS 33.2.0  r4f23b21 Released Dec  1, 2020 WEX-WEI x86 64bit/MS Windows - 12/07/21 04:13:28 Page 4
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Model Statistics    SOLVE TRANBOR1 Using LP From line 62
 
@@ -149,8 +149,8 @@ BLOCKS OF VARIABLES           2     SINGLE VARIABLES           25
 NON ZERO ELEMENTS            70
 
 
-GENERATION TIME      =        0.110 SECONDS      4 MB  33.2.0 r4f23b21 WEX-WEI
-GAMS 33.2.0  r4f23b21 Released Dec  1, 2020 WEX-WEI x86 64bit/MS Windows - 11/30/21 13:20:38 Page 5
+GENERATION TIME      =        0.047 SECONDS      4 MB  33.2.0 r4f23b21 WEX-WEI
+GAMS 33.2.0  r4f23b21 Released Dec  1, 2020 WEX-WEI x86 64bit/MS Windows - 12/07/21 04:13:28 Page 5
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE TRANBOR1 Using LP From line 62
 
@@ -165,7 +165,7 @@ Solution Report     SOLVE TRANBOR1 Using LP From line 62
 **** MODEL STATUS      1 Optimal                   
 **** OBJECTIVE VALUE         34750000.0000
 
- RESOURCE USAGE, LIMIT          0.203 10000000000.000
+ RESOURCE USAGE, LIMIT          0.156 10000000000.000
  ITERATION COUNT, LIMIT         1    2147483647
 --- *** This solver runs with a demo license. No commercial use.
 --- GMO memory 0.50 Mb (peak 0.50 Mb)
@@ -175,7 +175,7 @@ Solution Report     SOLVE TRANBOR1 Using LP From line 62
 
 
 --- LP status (1): optimal.
---- Cplex Time: 0.01sec (det. 0.03 ticks)
+--- Cplex Time: 0.03sec (det. 0.03 ticks)
 
 
 Optimal solution found
@@ -243,7 +243,7 @@ BAQLLA   .VENEZUELA          .           250.0000        +INF             .
 **** REPORT SUMMARY :        0     NONOPT
                              0 INFEASIBLE
                              0  UNBOUNDED
-GAMS 33.2.0  r4f23b21 Released Dec  1, 2020 WEX-WEI x86 64bit/MS Windows - 11/30/21 13:20:38 Page 6
+GAMS 33.2.0  r4f23b21 Released Dec  1, 2020 WEX-WEI x86 64bit/MS Windows - 12/07/21 04:13:28 Page 6
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 E x e c u t i o n
 
@@ -271,7 +271,7 @@ BAQLLA     100000.000  100000.000
 ----     63 VARIABLE Z.L                   =  3.475000E+7  
 
 
-EXECUTION TIME       =        0.500 SECONDS      4 MB  33.2.0 r4f23b21 WEX-WEI
+EXECUTION TIME       =        0.391 SECONDS      4 MB  33.2.0 r4f23b21 WEX-WEI
 
 
 USER: GAMS Demo license for Juan Velasquez           G210915|0002CO-GEN
@@ -280,5 +280,5 @@ USER: GAMS Demo license for Juan Velasquez           G210915|0002CO-GEN
 
 **** FILE SUMMARY
 
-Input      C:\Users\USUARIO\Downloads\Problema de transbordo.gms
-Output     C:\Users\USUARIO\Downloads\Problema de transbordo.lst
+Input      C:\Users\once1\Documents\Investigaci-n-de-operaciones\Problema de transbordo.gms
+Output     C:\Users\once1\Documents\Investigaci-n-de-operaciones\Problema de transbordo.lst
